@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Paws&Claws Error</title>
+  <link rel="icon" href="/c1ee0f4ad1a4ebced21f02dfba75ee44.jpg" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Basic Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+      position: relative;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+      padding: 0 10px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin-bottom: 30px;
+      color: #ccc;
+      padding: 0 10px;
+    }
+
+    /* Pet spaceship button */
+    .pet-ship {
+      width: 80px;
+      height: 80px;
+      background: url('https://cdn-icons-png.flaticon.com/512/616/616408.png') no-repeat center/cover;
+      border: none;
+      position: absolute;
+      cursor: pointer;
+      border-radius: 50%;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.7);
+      transition: transform 0.3s ease;
+    }
+
+    .pet-ship:hover {
+      transform: scale(1.2);
+    }
+
+    /* Stars, planets, clouds */
+    .star, .planet, .cloud {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    .star {
+      width: 2px;
+      height: 2px;
+      background: white;
+      animation: twinkle 2s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.2; }
+      to { opacity: 1; }
+    }
+
+    .planet {
+      width: 30px;
+      height: 30px;
+      background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+      box-shadow: 0 0 20px rgba(255, 154, 158, 0.7);
+    }
+
+    .cloud {
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+      animation: floatCloud linear infinite;
+    }
+
+    @keyframes floatCloud {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(50px, 50px); }
+      100% { transform: translate(0, 0); }
+    }
+  </style>
+</head>
+<script type="text/javascript">
+    var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+    (function(){
+    var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/680d02157161c519104ddf94/1ippd09no';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
+    })();
+    </script>
+    
+<body>
+
+  <h1>SORRY, AN ERROR OCCURRED</h1>
+  <p>Our space pet lost its way. Help it find the way home!</p>
+  <p>paws&claws to the rescue</p>
+
+  <a href="https://pixacat.org/" class="pet-ship" id="petShip"></a>
+
+  <script>
+    const petShip = document.getElementById('petShip');
+    let posX = window.innerWidth / 2;
+    let posY = window.innerHeight / 2;
+    let speedX = 0.6;
+    let speedY = 0.5;
+
+    function movePetShip() {
+      posX += speedX;
+      posY += speedY;
+
+      const maxX = window.innerWidth - petShip.offsetWidth;
+      const maxY = window.innerHeight - petShip.offsetHeight;
+
+      if (posX > maxX || posX < 0) {
+        speedX = -speedX;
+      }
+      if (posY > maxY || posY < 0) {
+        speedY = -speedY;
+      }
+
+      petShip.style.left = posX + 'px';
+      petShip.style.top = posY + 'px';
+
+      requestAnimationFrame(movePetShip);
+    }
+
+    movePetShip();
+
+    // Create random stars
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.classList.add('star');
+      star.style.top = Math.random() * 100 + '%';
+      star.style.left = Math.random() * 100 + '%';
+      star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+      document.body.appendChild(star);
+    }
+
+    // Create random planets
+    for (let i = 0; i < 5; i++) {
+      const planet = document.createElement('div');
+      planet.classList.add('planet');
+      planet.style.top = Math.random() * 90 + '%';
+      planet.style.left = Math.random() * 90 + '%';
+      document.body.appendChild(planet);
+    }
+
+    // Create random floating clouds
+    for (let i = 0; i < 8; i++) {
+      const cloud = document.createElement('div');
+      cloud.classList.add('cloud');
+      cloud.style.top = Math.random() * 90 + '%';
+      cloud.style.left = Math.random() * 90 + '%';
+      cloud.style.animationDuration = (Math.random() * 30 + 20) + 's';
+      document.body.appendChild(cloud);
+    }
+
+    // Responsive adjustment
+    window.addEventListener('resize', () => {
+      posX = window.innerWidth / 2;
+      posY = window.innerHeight / 2;
+    });
+  </script>
+
+</body>
+</html>
